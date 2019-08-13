@@ -1,0 +1,59 @@
+* {
+    -webkit-overflow-scrolling: touch;
+}
+
+a {
+  color: inherit;
+}
+
+#root {
+  height: 100vh;
+  overflow-x: hidden;
+  background-color: #202020;
+}
+
+#intro {
+  min-height: 100vh;
+  background-color: #202020;
+}
+
+.logo{
+  height: auto;
+  width: 80%;
+}
+
+#multi {
+  padding-top: 10vh;
+  background: linear-gradient(to bottom right, #fefefe 30%, #ebebeb 50%);
+}
+
+#info {
+  padding-top: 10vh;
+  background: linear-gradient(to top left, #fefefe 30%, #ebebeb 50%);
+}
+
+#schedule {
+  padding-top: 3vh;
+  padding-bottom: 30vh;
+  background: linear-gradient(to bottom left, #fefefe 80%, #202020 20%);
+}
+
+#switch {
+  color: white;
+}
+
+hr {
+  margin-bottom: 20px !important; 
+}
+
+#nolleguide-icon {
+  margin-right: 8px;
+}
+
+#nolleguide-text {
+  margin-bottom: 20px;
+}
+
+#scroll-down {
+  margin-left: 8px; 
+}
