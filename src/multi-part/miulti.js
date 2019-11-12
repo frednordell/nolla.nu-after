@@ -130,7 +130,7 @@ class Multi extends Component {
 								<Typography align="justify" variant="body1">{this.text[this.props.lang].nolleguide.text}</Typography>
 							</Grid>
 							<Grid item>
-								<Fab color="secondary" variant="extended" aria-label="Download guide">
+								<Fab component="a" color="secondary" variant="extended" aria-label="Download guide" href="Nolleguiden19.pdf" download>
 					        <Icon id="nolleguide-icon">cloud_download</Icon>
 					        {this.text[this.props.lang].nolleguide.download}
 								</Fab>
@@ -144,7 +144,7 @@ class Multi extends Component {
 						<Grid container direction="row" alignItems="flex-start" justify="space-evenly" spacing={2}>
 							<Grid container direction="column" alignItems="center" item xs={10} sm={4} md={2}>
 								<img className="logo" src={azula} alt="Logo" />
-								<Divider></Divider>
+								<Divider></Divider>	
 								<Typography variant="h3" align="center">{this.text[this.props.lang].stab.azula.name}</Typography>
 							</Grid>
 							<Grid container direction="column" alignItems="center" item xs={10} sm={4} md={2}>

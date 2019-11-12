@@ -1,17 +1,26 @@
 language: node_js
 node_js:
-- stable
+  - stable
 cache:
   directories:
   - node_modules
 script:
-- npm test
-- npm run build
+  - npm test
+  - npm run build
+before_deploy:
+  # Set up git user name and tag this commit
+  - git config --local user.name "frednordell"
+  - git config --local user.email "fred@nordells.nu"
+  - export TRAVIS_TAG=${TRAVIS_TAG:-$(date +'%Y%m%d%H%M%S')-$(git log --format=%h -1)}
+  - git tag $TRAVIS_TAG
+  - npm run build
 deploy:
   provider: pages
   skip_cleanup: true
+  target_branch: release
+  keep_history: true
+  github_token:
+    secure: zlpRyPbjqVGV8hPSSUJ1lzyMR9bGKF8yVHK7agiG7+cx7sfMZpi71KvwQqJeCUdDLYZmmzPOCKX3hpe5mP/OZc79GPPb3rZzpUTtpujoOlQrEITxVK8SbOczUEHn+H7HSjykSeZ7G2XgqCUK5YTgvHni3q30Li1zgmFeaj5Jio8mcitpTTNrnGblpi8/wt8eT7ZaUFmzdouzNMXnaqrd+/zk6Zcy5pnkKmdTLji6ApWsE6/KTl2BPiW2Dxb/xAr3aZJzN01qmmRZXNDw5gfQmsJlUyQ3R5QCBg53oYYiCae7JgHIpf2ydIvUksNkYUfEILeqf6b5UKgfjFoank6I/2x2Haokm30QhUfQ/KwN+ZpePvbKuEakkVHnFY5dJFmryNLtiaHUIVFXuFoQyY4WbddW4EZ99nzTqOXp8bnvg0qu+29YrPrl5Rvpu65qOi1qLM2fKirRknmOHZKRKDP1lfme90PF3E381DrU9S1jn7A1pDHw1nKN/fFqDvaSNLEeVljWC9Y6QqhHjUMaMrfTQUFsHOFhhNUGcG+Y2gsXVicRR3aANGp4NJzUWGh/Kxk1gUhYrtBbfazNErcqskQunCejamHLAgiHw5f0gnZfEHUvAzK8S13RdPcTld0T2Q2bb65CV4wibAEMDxrgJsWcbpwoJO08O9GeVltp1l8EbdA=
   local_dir: build
   on:
-    branch: master
-  github_token:
-    secure: LE+8yhIW10ifhfsvFEJ5m3ykEIbhlD2i9774d7tYioHJXY6DHH/DLw9T6moDt+TyrmJy6HucRAFPUN+s1nnQC7gMKGp3kN8gYtjC4HqZHFERk6t9Vw5mwyQLm9xJj4wX+SDK83ZisaSTaPVoCyErT4miIJjfqW6CzxRRLzDf2NiuKIPWkaisnnueZLjJMj2D/w+/zjR6v24BS5CJH7CoY5zjUevyUp0q/veazcJmT9EJiK+8M5sIRR9KQy2d+OlKVQPiWjHptA0+hwiawxhpY6/c/zIVPK+B2asvPEVRaTB13p2z80KHjmo2iQUZIfo3IA1kkPKismxrbZvXlR1UqRRdNFRheGlM8nLsy/iCMC8adtC4FG6gXIOsSuP7gfiJG3tEzlJmE06p06Z6RWpZvCI8fLr49JLFPxVjj+UF1ooSiVNZRw9dQTbNQsYseyVAFciMwILQsBK6OYVecTB7Ac+q3nXb5RwT5QydbGdfo9AjsyrXXR+DBKHK64iB2FwSMmrrJySiTFgWb5GuksSSYNJLFUZlpAYeR0hBOdmaEJspnY3SBtOucAULdVd6aA9BPJtPYuCieXngQXCXZVok9wh+vy7KZafZGj/eLzTFWHou/8JKj3p7IItX9MizUgc4V60kgi7s3KWwm/fEW8nfg8mEMj9dbNFzn95PQSBtEtE=
+    branch: master 
