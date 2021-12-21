@@ -1,7 +1,18 @@
 {
-  "name": "nolla.nu",
+  "name": "nolla.nu-after",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/frednordell/nolla.nu-after.git"
+  },
+  "babel": {
+    "presets": [
+      "@babel/react"
+    ]
+  },
   "dependencies": {
     "@material-ui/core": "^4.2.0",
     "react": "^16.8.6",
@@ -13,7 +24,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "publish:unix": "SET NODE_ENV=production && rm -rf dist && mkdir dist && npx babel src --out-dir dist --copy-files",
+    "publish:windows": "SET NODE_ENV=production && if exist dist rmdir /s /q dist && mkdir dist && npx babel src --out-dir dist --copy-files"
   },
   "eslintConfig": {
     "extends": "react-app"
